@@ -134,6 +134,23 @@ SELECT *
 |    109 | Alex  | Watt    | Probation  | Loan    |           4 |
 +--------+-------+---------+------------+---------+-------------+
 
+--use not like
+
+select * from employees
+     where fname not like "A%";
++--------+---------+---------+------------+---------+--------+
+| emp_id | fname   | lname   | desig      | dept    | salary |
++--------+---------+---------+------------+---------+--------+
+|    101 | Raju    | Rastogi | Manager    | Loan    |  37000 |
+|    102 | Sham    | Mohan   | Cashier    | Cash    |  25000 |
+|    103 | Baburao | Apte    | Associate  | Loan    |  35000 |
+|    104 | Paul    | Philip  | Accountant | Account |  48000 |
+|    106 | Rick    | Watt    | Manager    | Account |  75000 |
+|    107 | Leena   | Johnson | Lead       | Cash    |  20000 |
+|    108 | John    | Paul    | Manager    | IT      |  27500 |
++--------+---------+---------+------------+---------+--------+
+
+
 -- LIMIT Clause
 
 select * from employees;
