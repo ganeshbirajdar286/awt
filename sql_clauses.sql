@@ -187,7 +187,7 @@ select * from employees order by salary desc limit 1;
 +--------+-------+-------+---------+---------+--------+
 
 
-select * from employees limit 3,3;
+select * from employees limit 3,3;  -- LIMIT (offset, count)  offset → number of rows to skip  count → number of rows to return
 +--------+-------+--------+------------+---------+--------+
 | emp_id | fname | lname  | desig      | dept    | salary |
 +--------+-------+--------+------------+---------+--------+
