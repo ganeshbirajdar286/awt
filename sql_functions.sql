@@ -131,3 +131,12 @@ select trim("  Ganesh   ");
 | Ganesh              |
 +---------------------+
 
+-- length function
+
+select *, length(phonenumber) as no_length from constact;
++--------+-------------+-----------+
+| name   | phonenumber | no_length |
++--------+-------------+-----------+
+| ganesh | 8828388389  |        10 |
+| akash  | 8289484019  |        10 |
++--------+-------------+-----------+

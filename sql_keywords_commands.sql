@@ -22,6 +22,14 @@ show tables;
 | students            |
 +---------------------+
 
+--delete tables
+
+DROP TABLE employee;  --name of  table
+
+--delete database
+
+DROP DATABASE database_name;
+
 --  Table Creation (DDL – Data Definition Language)
 
 
@@ -134,5 +142,36 @@ select * from employees;
 |    108 | John    | Paul    | Manager    | IT      |  25000 |
 |    109 | Alex    | Watt    | Probation  | Loan    |  25000 |
 +--------+---------+---------+------------+---------+--------+
+
+
+-- use  of alert  for  modify the table 
+
+desc employees;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| emp_id | int         | NO   | PRI | NULL    |       |
+| fname  | varchar(50) | NO   |     | NULL    |       |
+| lname  | varchar(50) | NO   |     | NULL    |       |
+| desig  | varchar(50) | NO   |     | NULL    |       |
+| dept   | varchar(50) | NO   |     | NULL    |       |
+| salary | int         | NO   |     | 25000   |       |
++--------+-------------+------+-----+---------+-------+
+
+
+ALTER TABLE employees 
+   MODIFY emp_id INT AUTO_INCREMENT;
+
+ desc employees;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| emp_id | int         | NO   | PRI | NULL    | auto_increment |
+| fname  | varchar(50) | NO   |     | NULL    |                |
+| lname  | varchar(50) | NO   |     | NULL    |                |
+| desig  | varchar(50) | NO   |     | NULL    |                |
+| dept   | varchar(50) | NO   |     | NULL    |                |
+| salary | int         | NO   |     | 25000   |                |
++--------+-------------+------+-----+---------+----------------+
 
 
