@@ -1,0 +1,102 @@
+awk '{print $2 }' sample.txt
+
+fname
+Raju
+Sham
+Baburao
+Paul
+Alex
+Rick
+Leena
+John
+Alex
+
+// predefine terms in awk
+NR-no. of record/row
+NF-no. of fields
+$0-print everything
+$1,$2-field no.
+
+ awk  '{print $4,$2}' sample.txt
+
+desig       fname
+Manager      Raju
+Chashier     Sham
+Associate    Baburao
+Accountant   Paul
+Associate    Alex
+Manager      Rick
+Lead         Leena
+Manager      John
+Probation    Alex
+
+awk '{print $NF}' sample.txt  // here NF is no of filed thaat 6 so  the result was $6
+
+salary
+37000
+32000
+25000
+45000
+35000
+65000
+25000
+75000
+40000
+
+awk '{print $0}' sample.txt
+
+id   fname   lname    desig       dept     salary
+101  Raju    Rastogi  Manager     Loan     37000
+102  Sham    Mohan    Chashier    Cash     32000
+103  Baburao Apte     Associate   Loan     25000
+104  Paul    Philip   Accountant  Account  45000
+105  Alex    Watt     Associate   Deposit  35000
+106  Rick    Watt     Manager     Account  65000
+107  Leena   Jhonson  Lead        Cash     25000
+108  John    Paul     Manager     IT       75000
+109  Alex    Watt     Probation   Loan     40000
+
+
+//  use for searching value we use //
+awk '/Paul/{print $0}' sample.txt
+
+104  Paul    Philip   Accountant  Account  45000
+108  John    Paul     Manager     IT       75000
+
+// NR is no of rows 
+awk '{print NR, $0}' sample.txt
+
+1 id   fname   lname    desig       dept     salary
+2 101  Raju    Rastogi  Manager     Loan     37000
+3 102  Sham    Mohan    Chashier    Cash     32000
+4 103  Baburao Apte     Associate   Loan     25000
+5 104  Paul    Philip   Accountant  Account  45000
+6 105  Alex    Watt     Associate   Deposit  35000
+7 106  Rick    Watt     Manager     Account  65000
+8 107  Leena   Jhonson  Lead        Cash     25000
+9 108  John    Paul     Manager     IT       75000
+10 109  Alex    Watt     Probation   Loan     40000
+
+// printing  the data present at line no 6
+awk  'NR==6 {print $0}' sample.txt
+105  Alex    Watt     Associate   Deposit  35000
+
+// print range  of lines(line 3 to 6)
+awk  'NR==3,NR==6 {print $0}' sample.txt
+
+102  Sham    Mohan    Chashier    Cash     32000
+103  Baburao Apte     Associate   Loan     25000
+104  Paul    Philip   Accountant  Account  45000
+105  Alex    Watt     Associate   Deposit  35000
+
+//get line no. of empty lines
+awk 'NF==0 {print NR}' sample.txt
+
+11
+12
+
+//searching multiple value
+awk '/Raju|Sham/{print $0}' sample.txt
+
+101  Raju    Rastogi  Manager     Loan     37000
+102  Sham    Mohan    Chashier    Cash     32000
