@@ -1,0 +1,32 @@
+comma is called a delimiter.
+
+What is a Delimiter?
+A delimiter is a character that separates data fields in a file.
+----------------------------------------------------------------------------------------------------------------------------------
+
+awk -F, '{print $2}' emp.csv  // -F means Field Separator ."," means the delimiter is a comma.
+
+fname
+Raju
+Sham
+Baburao
+Paul
+Alex
+Rick
+Leena
+John
+Alex
+----------------------------------------------------------------------------------------------------------------------------------
+// print data of employees whose salary >50k
+
+ awk -F, '$6>50000 {print $6}' emp.csv
+salary
+65000
+75000
+-------------------------------------------------------------------------------------------------------------------------------------
+
+what if a file is having  multiple delimiter
+
+ awk -F[,:] '{print $2}' multiple-del.txt 
+example of
+-----------------------------------------------------------------------------------------------------------------------------------------

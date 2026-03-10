@@ -1,0 +1,60 @@
+//how to only get status of service
+
+systemctl status mysql
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/usr/lib/systemd/system/mysql.service; enabled; preset: enabled)
+     Active: active (running) since Wed 2026-03-11 00:19:31 IST; 4h 31min left
+    Process: 1432 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre code=exited, stat>
+   Main PID: 1457 (mysqld)
+     Status: "Server is operational"
+      Tasks: 38 (limit: 8527)
+     Memory: 390.2M (peak: 439.2M)
+        CPU: 36.881s
+     CGroup: /system.slice/mysql.service
+             └─1457 /usr/sbin/mysqld
+
+Mar 11 00:19:30 ganesh-IdeaPad-Gaming-3-15ARH05 systemd[1]: Starting mysql.service - MySQL>
+Mar 11 00:19:31 ganesh-IdeaPad-Gaming-3-15ARH05 systemd[1]: Started mysql.service - MySQL >
+lines 1-14/14 (END)
+
+//i want only   Active: active then the is 
+
+systemctl status mysql | awk  'NR==3 {print $0}'
+   Active: active (running) since Wed 2026-03-11 00:19:31 IST; 4h 25min lef
+
+
+ systemctl status ufw | awk 'NR==3 {print $0}' // ufw is firewall
+
+     Active: active (exited) since Wed 2026-03-11 00:19:28 IST; 4h 21min left
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+// how to get list of files
+
+ls -al | awk '{print $NF}'
+
+40
+.
+..
+emp.csv
+emp.slo.txt
+.git
+multiple-del.txt
+sample.slo.txt
+sample.txt
+system.txt
+mysql
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+// how to read  logs in range  of time
+
+sudo less /var/log/syslog | awk -F"T" '$2>="00:55:32" &&  $2<="00:55:33"'
+
+2026-03-08T00:55:32.432783+05:30 ganesh-IdeaPad-Gaming-3-15ARH05 systemd[1]: Started mysql.service - MySQL Community Server.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
