@@ -1,0 +1,60 @@
+-------------------------------------------------------------------------------------------------------------------------
+
+awk 'BEGIN{print "------------------employees data-------------"} {print $0} END{print "-------------employee data end-------------"}' sample.txt
+------------------employees data-------------
+id   fname   lname    desig       dept     salary
+101  Raju    Rastogi  Manager     Loan     37000
+102  Sham    Mohan    Chashier    Cash     32000
+103  Baburao Apte     Associate   Loan     25000
+104  Paul    Philip   Accountant  Account  45000
+105  Alex    Watt     Associate   Deposit  35000
+106  Rick    Watt     Manager     Account  65000
+107  Leena   Jhonson  Lead        Cash     25000
+108  John    Paul     Manager     IT       75000
+109  Alex    Watt     Probation   Loan     40000
+-------------employee data end-------------
+
+
+-----------------------------------------------------------------------------------------------
+// how to find total sum od salary
+
+awk 'BEGIN{sum=0} { sum=sum+$6} END{print sum}' sample.txt  // sum is variable 
+
+379000
+------------------------------------------------------------------------------------------------------
+
+// calculate avg
+awk 'BEGIN{avg=0;total=0} NR>1 {total=total+$6} END{avg=total/(NR-1); print avg}' sample.txt
+42111.1
+--------------------------------------------------------------------------------------------------
+// how to ingore headers / first row to count no of users
+
+ awk 'BEGIN{count=0} NR>1  {if($NF>0)count++} END{print "total employees are:" count }' sample.txt
+total employees are:9
+--------------------------------------------------------------------------------------------------------
+//  find the  length of longest line
+
+awk '{if(length($0)>max) max=length($0)} END{print "length of  longest line is " max}' sample.txt
+length of  longest line is 49
+
+----------------------------------------------------------------------------------------------------------
+// print high for salary>50k else low
+
+awk '{if($NF>50000)$7="high";else $7="low"; print $0}' sample.txt  // $7 dont exit i creste use $7 
+
+id fname lname desig dept salary high
+101 Raju Rastogi Manager Loan 37000 low
+102 Sham Mohan Chashier Cash 32000 low
+103 Baburao Apte Associate Loan 25000 low
+104 Paul Philip Accountant Account 45000 low
+105 Alex Watt Associate Deposit 35000 low
+106 Rick Watt Manager Account 65000 high
+107 Leena Jhonson Lead Cash 25000 low
+108 John Paul Manager IT 75000 high
+109 Alex Watt Probation Loan 40000 low
+
+-----------------------------------------------------------------------------------------------------------
+// print total salary paid in loan department 
+
+awk '{if($5=="Loan") total=$6+total} END {print total}' sample.txt
+102000
