@@ -58,3 +58,58 @@ id fname lname desig dept salary high
 
 awk '{if($5=="Loan") total=$6+total} END {print total}' sample.txt
 102000
+
+------------------------------------------------------------------------------------------------------------
+// useing file for  query
+
+ cat file.awk 
+
+{if($NF>50000)$7="HIGH"  // when we write query in file there is no need of  useing ";" space work as ";" but in file  only
+
+else  $7="low"
+ print $0}
+
+
+awk -f file.awk sample.txt
+
+id fname lname desig dept salary HIGH
+101 Raju Rastogi Manager Loan 37000 low
+102 Sham Mohan Chashier Cash 32000 low
+103 Baburao Apte Associate Loan 25000 low
+104 Paul Philip Accountant Account 45000 low
+105 Alex Watt Associate Deposit 35000 low
+106 Rick Watt Manager Account 65000 HIGH
+107 Leena Jhonson Lead Cash 25000 low
+108 John Paul Manager IT 75000 HIGH
+109 Alex Watt Probation Loan 40000 low
+--------------------------------------------------------------------------------------------------------------------
+
+// useing AWK as a script 
+
+
+#!/bin/awk -f 
+
+#Comment 
+BEGIN{
+  print "hello "
+}
+
+# patter and action
+{
+print $1
+}
+
+
+
+./awk_demo.awk emp.csv
+hello 
+emp_id,fname,lname,desig,dept,salary
+101,Raju,Rastogi,Manager,Loan,37000
+102,Sham,Mohan,Chashier,Cash,32000
+103,Baburao,Apte,Associate,Loan,25000
+104,Paul,Philip,Accountant,Account,45000
+105,Alex,Watt,Associate,Deposit,35000
+106,Rick,Watt,Manager,Account,65000
+107,Leena,Jhonson,Lead,Cash,25000
+108,John,Paul,Manager,IT,75000
+109,Alex,Watt,Probation,Loan,40000
